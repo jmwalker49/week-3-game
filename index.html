@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Physic Game</title>
+  </head>
+  <body>
+
+	<div id="game">
+			<p><h1>The Physic Game</h1></p>
+			<p>Guess what leter I'm thinking of ...</p>
+			<p>Wins: </p>
+			<p>Losses: </p>
+			<p>Guesses Left: </p>
+			<p>Your guesses so far: </p>
+		</div>
+
+		<script type="test/javascript">
+
+		// Defines the choices the compurter can make
+		var computerChoice = ["a"];
+
+		// tracks wins, losses, guesses left and guesses made
+		var wins = 0;
+		var losses = 0;
+		var guessesLeft = 9;
+		var guessesMade = ""
+
+		// when a user presses a key it will run a function
+		document.onkeyup = function(event) {
+
+		// determine what key is pressed, sets it as the userGuess and sets it to lowercase
+		var userGuess = String.fromCharCode(event.keycode).toLowerCase();
+
+		// Sets the computerGuess variable equal to a random choice from the computerChoice array.
+		var computerGuess = computerChoice[Math.floor(Math.random() * computerChoice.length)];
+
+		// If the userGuess = computerGuess add to wins.
+		if (userGuess === computerGuess){
+		wins++;
+		}			
+		
+	
+		
+
+
+		var html = "<p>Press r, p, or s to start playing!</p>" +
+		"<p>Wins: " + wins  + "</p>" +
+		"<p>Losses: " + losses + "</p>" +
+		"<p>Ties: " + ties + "</p>";
+
+					
+		
+		document.getElementById("game").innerHTML = html;
+	
+};
+		
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+		</body>
+		</html>	

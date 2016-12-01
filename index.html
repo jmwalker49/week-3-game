@@ -2,72 +2,74 @@
 <html lang="en-us">
   <head>
     <meta charset="UTF-8">
-    <title>Physic Game</title>
+    <title>The Pyschic Game</title>
   </head>
   <body>
 
-	<div id="game">
-			<p><h1>The Physic Game</h1></p>
-			<p>Guess what leter I'm thinking of ...</p>
-			<p>Wins: </p>
-			<p>Losses: </p>
-			<p>Guesses Left: </p>
-			<p>Your guesses so far: </p>
-		</div>
+    <!-- When we start playing the game, our HTML will be placed into this div. -->
+    <div id="game">
+      <p><h1>The Psychic Game</h1></p>
+      <p>Guess what letter I'm thinking of ...</p>
+      <p>Wins: </p>
+      <p>Losses: </p>
+      <p>Guesses Left: 9</p>
+      <p>Your Guesses so far: </p>
 
-		<script type="test/javascript">
+    </div>
 
-		// Defines the choices the compurter can make
-		var computerChoice = ["a"];
+    <script type="text/javascript">
 
-		// tracks wins, losses, guesses left and guesses made
-		var wins = 0;
-		var losses = 0;
-		var guessesLeft = 9;
-		var guessesMade = ""
+      // Our array of possible computer choices.
+      var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",];
 
-		// when a user presses a key it will run a function
-		document.onkeyup = function(event) {
+      // Variables for tracking our wins, losses guesses left and guesses made.
+      var wins = 0;
+      var losses = 0;
+      var left = 9;
+      var guesses = [];
+      
+      // When the user presses a key, it will run the following function...
+      document.onkeyup = function(event) {
 
-		// determine what key is pressed, sets it as the userGuess and sets it to lowercase
-		var userGuess = String.fromCharCode(event.keycode).toLowerCase();
+        // Determine which key was pressed, make it lowercase, and set it to the userGuess variable.
+        var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 
-		// Sets the computerGuess variable equal to a random choice from the computerChoice array.
-		var computerGuess = computerChoice[Math.floor(Math.random() * computerChoice.length)];
+        // Sets the computerGuess variable equal to a random choice from the computerChoice array.
+        var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
-		// If the userGuess = computerGuess add to wins.
-		if (userGuess === computerGuess){
-		wins++;
-		}			
-		
-	
-		
+        // If the user presses a key it runs a loop
+        
+         for (i = 0; i < 1; i++) {
+          // This logic determines the outcome of the game (win/loss/left/guesses), and increments the appropriate counter.
+          if (userGuess === computerGuess) {
+            wins++; left = 9; guesses = [];
+          }
+          else if (userGuess !== computerGuess) {
+           left--;
+           guesses.push(userGuess);
+          }
+          if (left === 0){
+            losses++; guesses = []; left = 9;
+          }
+            
+          
+        
+                   
 
+          // Here we create the HTML that will be injected into our div and displayed on the page.
+          var html = "<p><h1>The Psychic Game</h1></p>" +
+          "<p>Guess what letter I'm thinking of ...</p>" +
+          "<p>Wins: " + wins + "</p>" +
+          "<p>Losses: " + losses + "</p>" +
+          "<p>Guesses Left: " + left + "</p>" +
+          "<p>Your Guesses so far: " + guesses + "</p>";
 
-		var html = "<p>Press r, p, or s to start playing!</p>" +
-		"<p>Wins: " + wins  + "</p>" +
-		"<p>Losses: " + losses + "</p>" +
-		"<p>Ties: " + ties + "</p>";
+          // Injecting the HTML we just created into our div and updating the game information on our page.
+          document.querySelector("#game").innerHTML = html;
 
-					
-		
-		document.getElementById("game").innerHTML = html;
-	
-};
-		
+      } };
+      
+    </script>
 
-</script>
-</body>
+  </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-		</body>
-		</html>	
